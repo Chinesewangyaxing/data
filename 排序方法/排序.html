@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+// 选择排序
+	function selectSort(arr){
+		for(var i=0;i<arr.length;i++){
+			// 将当前位置作为关键位置（最小位置）
+			var key=i;
+			// 找出剩余的数列中最小值得位置作为关键位置
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[j]<arr[key]){
+					key=i;
+				}
+			}
+			// 最小值的位置不是当前位置，用嘴小值替换当前位置的值
+			if(key!=i){
+				var srap=arr[i];
+				arr[i]=arr[key];
+				arr[key]=swap;
+			}
+		}
+	}
+	// 快速排序
+	function quickSort(arr){
+		var len=arr.length;//获取arr的长度
+		if(len<=1){//如果arr的长度小于等于1则直接返回arr
+			return arr;
+		}
+		var pIndex=Math.floor(len/2);//获得基准点的索引下标
+		var pivot=arr.splice(pIndex,1);//用splice方法获取基准点pivot=[arr[pIndex]],此时的arr为去除pIndex项之后的剩余项
+		var left=[];
+		var right=[];
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]<pivot[0]){//如果小于基准点就放到数组l中
+				left.push(arr[i]);
+			}else{//如果大于基准点就放到右边数组中
+				right.push(arr[i]);
+			}
+		}
+		return quickSort(left).concat(pivot,quickSort(right));//递归不断重复整个过程
+	}
+</script>
+</html>
